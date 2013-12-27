@@ -1,0 +1,335 @@
+/*-------------------------
+	Simple reset
+--------------------------*/
+
+
+*{
+	margin:0;
+	padding:0;
+}
+
+
+/*-------------------------
+	General Styles
+--------------------------*/
+
+
+html{
+	background: url('../img/background.jpg') center top no-repeat #141415;
+}
+
+body{
+	font:14px/1.3 'Segoe UI',Arial, sans-serif;
+	position:relative;
+	min-height:500px;
+}
+
+a, a:visited {
+	outline:none;
+	color:#1c4f64;
+}
+
+a:hover{
+	text-decoration:none;
+}
+
+section, footer, header{
+	display: block;
+}
+
+
+/*----------------------------
+	Heading
+-----------------------------*/
+
+
+h1{
+	font: 48px/1 'Yanone Kaffeesatz', sans-serif;
+	font-weight:200;
+	color:#fff;
+	text-align:center;
+	width:500px;
+	padding:30px 0 50px;
+	margin:0 auto;
+
+}
+
+h1 b{
+	font-weight:400;
+}
+
+
+/*----------------------------
+	The Photo
+-----------------------------*/
+
+
+#photo{
+	margin:0 auto;
+	width:500px;
+	height:500px;
+	text-align:center;
+	position:relative;
+}
+
+#photo:after{
+	content: 'Drop a photo here';
+	top: 150px;
+	text-transform: uppercase;
+	z-index: 1;
+	color: #ccc;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	display: block;
+	font-size: 20px;
+	position: absolute;
+	width: 100%;
+	letter-spacing: 1px;
+}
+
+#photo canvas{
+	text-align:center;
+	display:inline-block;
+	border-radius: 15px;
+	border:8px solid rgba(0,0,0,0.1);
+	box-sizing: border-box;
+	position:absolute;
+	z-index:5;
+	top:50%;
+	left: 50%;
+}
+
+#photo img{
+	opacity:0;
+}
+
+/*----------------------------
+	The Filters
+-----------------------------*/
+
+
+
+#filterContainer{
+	width: 650px;
+	margin: 50px auto 90px;
+	position: relative;
+	display:none;
+}
+
+#filterContainer:before{
+	content: '';
+	width: 20px;
+	box-shadow: 15px 0 10px #111;
+	position: absolute;
+	top: 0;
+	left: -22px;
+	bottom:-10px;
+	z-index:5;
+}
+
+#filterContainer:after{
+	content: '';
+	width: 20px;
+	box-shadow: -15px 0 10px #111;
+	position: absolute;
+	top: 0;
+	right: -22px;
+	bottom:-10px;
+	z-index:5;
+}
+
+#filters{
+	padding: 20px 20px 30px;
+	border-radius: 8px;
+	background-color: rgba(0,0,0,0.1);
+	overflow: hidden;
+	list-style: none;
+	white-space: nowrap;
+	overflow-x: scroll;
+}
+
+#filters li{
+	display:inline-block;
+	margin:0 15px 0 0;
+}
+
+#filters li:last-child{
+	margin-right:0;
+}
+
+#filters li a{
+	display: block;
+	width: 150px;
+	height: 130px;
+	display: inline-block;
+	position: relative;
+	background: center top no-repeat;
+	text-decoration: none !important;
+
+	font-weight: bold;
+	color: #ccc;
+	line-height: 294px;
+	text-align: center;
+	box-shadow: 0 0 1px rgba(255,255,255,0.4) inset;
+	border-radius: 4px;
+	font-size: 12px;
+}
+
+#filters li a.active{
+	cursor:default;
+}
+
+#filters li a.active:before{
+	content: '';
+	position: absolute;
+	width: 49px;
+	height: 45px;
+	top: 43px;
+	left: 51px;
+	background: url('../img/star.png') no-repeat;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+
+/* The filters */
+
+#filters li #normal{		background-image:url('../img/filters/normal.jpg'); }
+#filters li #vintage{		background-image:url('../img/filters/vintage.jpg'); }
+#filters li #lomo{			background-image:url('../img/filters/lomo.jpg'); }
+#filters li #clarity{		background-image:url('../img/filters/clarity.jpg'); }
+#filters li #sinCity{		background-image:url('../img/filters/sinCity.jpg'); }
+#filters li #sunrise{		background-image:url('../img/filters/sunrise.jpg'); }
+#filters li #crossProcess{	background-image:url('../img/filters/crossProcess.jpg'); }
+#filters li #orangePeel{	background-image:url('../img/filters/orangePeel.jpg'); }
+#filters li #love{			background-image:url('../img/filters/love.jpg'); }
+#filters li #grungy{		background-image:url('../img/filters/grungy.jpg'); }
+#filters li #jarques{		background-image:url('../img/filters/jarques.jpg'); }
+#filters li #pinhole{		background-image:url('../img/filters/pinhole.jpg'); }
+#filters li #oldBoot{		background-image:url('../img/filters/oldBoot.jpg'); }
+#filters li #glowingSun{	background-image:url('../img/filters/glowingSun.jpg'); }
+#filters li #hazyDays{		background-image:url('../img/filters/hazyDays.jpg'); }
+#filters li #herMajesty{	background-image:url('../img/filters/herMajesty.jpg'); }
+#filters li #nostalgia{		background-image:url('../img/filters/nostalgia.jpg'); }
+#filters li #hemingway{		background-image:url('../img/filters/hemingway.jpg'); }
+#filters li #concentrate{	background-image:url('../img/filters/concentrate.jpg'); }
+
+
+/* Custom scrollbars for webkit */
+
+#filterContainer ::-webkit-scrollbar {
+    height: 4px;
+	background-color: rgba(100,100,100,0.2);
+	border-radius: 2px;
+}
+
+/* Handle */
+#filterContainer ::-webkit-scrollbar-thumb {
+    border-radius: 1px;
+    background: #fff;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+#filterContainer ::-webkit-scrollbar-thumb:window-inactive {
+	background: #aaa;
+}
+
+/* Tutorial update: Adding a download button */
+
+.downloadImage{
+	position: absolute;
+	display: none;
+	text-indent: -999px;
+	top: 100px;
+	right: -260px;
+	overflow: hidden;
+	width: 206px;
+	height: 153px;
+	background: url('../img/download_image.jpg');
+}
+
+
+/*----------------------------
+	The Demo Footer
+-----------------------------*/
+
+
+footer{
+	background-color: #080808;
+	bottom: 0;
+	box-shadow: 0 -1px 2px rgba(0,0,0,0.4);
+	height: 40px;
+	left: 0;
+	position: fixed;
+	width: 100%;
+	z-index: 100000;
+}
+
+footer h2{
+	font-size: 14px;
+	font-weight: normal;
+	position: absolute;
+	top:0;
+	left: 50%;
+	bottom:0;
+	margin-left: -420px;
+	padding:13px 20px 0;
+	border:1px solid #000;
+	border-width:0 1px;
+	background-color:rgba(0,0,0,0.6);
+	box-shadow:0 0 5px #000 inset;
+	line-height: 1;
+	margin-top: 0;
+}
+
+footer h2 a{
+	color: #EEEEEE !important;
+	text-decoration:none !important;
+}
+
+footer h2 i{
+	font-style:normal;
+	color:#888;
+}
+
+#tzine-download{
+	opacity:0.9;
+	background-color:#257691;
+	font-size:11px;
+	text-align:center;
+	text-transform:uppercase;
+	width:150px;
+	height:28px;
+	line-height:28px;
+	text-decoration:none !important;
+
+	display: inline-block;
+	border-radius: 2px;
+	color: #fff !Important;
+	font-weight: bold;
+	box-shadow: 0 -1px 2px #1e5e74 inset;
+
+	border-top:1px solid #26849c;
+
+	text-shadow:1px 1px 1px #1e6176;
+	margin-top:6px;
+}
+
+#tzine-download:hover{
+	opacity:1;
+}
+
+#tzine-actions{
+	position:absolute;
+	top:0;
+	width:500px;
+	right:50%;
+	margin-right:-420px;
+	text-align:right;
+}
+
+#tzine-actions iframe{
+	display: inline-block;
+	height: 21px;
+	width: 95px;
+	position: relative;
+	float: left;
+	margin-top: 11px;
+}
